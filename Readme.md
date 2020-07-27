@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Ковалев](https://up.htmlacademy.ru/ecmascript/12/user/329043).
-* Наставник: `Неизвестно`.
+* Наставник: [Всеволод Артемьев](https://htmlacademy.ru/profile/id459331).
 
 ---
 
