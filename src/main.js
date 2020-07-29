@@ -318,12 +318,3 @@ const body = document.body;
 body.classList.add(`hide-overflow`);
 const hideOverflow = document.querySelector(`.hide-overflow`);
 render(hideOverflow, createFilmDetailsPopupTemplate(), `beforeend`);
-
-
-
-
-
-
-
-
-
