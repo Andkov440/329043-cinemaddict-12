@@ -1,6 +1,3 @@
-const FILM_CARDS_COUNT = 5;
-const FILM_CARDS_EXTRA_COUNT = 2;
-
 import {createUserRankTemplate} from "./view/user-rank.js";
 import {createMainNavigationTemplate} from "./view/main-navigation.js";
 import {createSortTemplate} from "./view/sort.js";
@@ -11,6 +8,9 @@ import {createFilmDetailsPopupTemplate} from "./view/film-details.js";
 import {createFilmsTopRatedTemplate} from "./view/top-rated.js";
 import {createFilmsMostCommentedTemplate} from "./view/most-commented.js";
 import {createFooterStatisticsTemplate} from "./view/footer-statistic.js";
+
+const FILM_CARDS_COUNT = 5;
+const FILM_CARDS_EXTRA_COUNT = 2;
 
 const render = (container, template) => {
   container.insertAdjacentHTML(`beforeend`, template);
