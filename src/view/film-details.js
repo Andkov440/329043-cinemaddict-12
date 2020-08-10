@@ -1,4 +1,5 @@
 export const createFilmDetailsPopupTemplate = () => {
+  //  const {caption, poster, description, rating, year, duration, genre, commentsCount} = film;
   return (
     `<section class="film-details">
   <form class="film-details__inner" action="" method="get">

@@ -8,9 +8,12 @@ import {createFilmDetailsPopupTemplate} from "./view/film-details.js";
 import {createFilmsTopRatedTemplate} from "./view/top-rated.js";
 import {createFilmsMostCommentedTemplate} from "./view/most-commented.js";
 import {createFooterStatisticsTemplate} from "./view/footer-statistic.js";
+import {generateFilm} from "./mock/film.js";
 
-const FILM_CARDS_COUNT = 5;
+const FILM_CARDS_COUNT = 20;
 const FILM_CARDS_EXTRA_COUNT = 2;
+
+const filmCards = new Array(FILM_CARDS_COUNT).fill().map(generateFilm);
 
 const render = (container, template) => {
   container.insertAdjacentHTML(`beforeend`, template);
@@ -29,7 +32,7 @@ const filmsList = films.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 
 for (let i = 0; i < FILM_CARDS_COUNT; i++) {
-  render(filmsListContainer, createFilmCardTemplate());
+  render(filmsListContainer, createFilmCardTemplate(filmCards[i]), `beforeend`);
 }
 
 render(filmsList, createShowMoreButtonTemplate());
