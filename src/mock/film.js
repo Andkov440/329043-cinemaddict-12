@@ -6,7 +6,7 @@ const getRandomInteger = (a = 0, b = 1) => {
 };
 
 const getRandomArray = (arr, min = 0, max = 1) => {
-  let result = [];
+  const result = [];
   for (let i = 0; i < getRandomInteger(min, max); i++) {
     result.push(arr[getRandomInteger(0, arr.length - 1)]);
   }
@@ -104,12 +104,12 @@ const generateEmoji = () => {
 };
 
 const generateDate = () => {
-  let now = new Date();
+  const now = new Date();
 
   return formatDate(now);
 };
 
-const generateAuthor = () => {
+const generateCommentAuthor = () => {
   const authors = [
     `Tim Macoveev`,
     `John Doe`,
@@ -127,7 +127,9 @@ const generateMessage = () => {
     `Interesting setting and a good cast`,
     `Booooooooooring`,
     `Very very old. Meh`,
-    `Almost two hours? Seriously?`
+    `Almost two hours? Seriously?`,
+    `Very interesting`,
+    `Amaizing!`
   ];
 
   const randomIndex = getRandomInteger(0, messages.length - 1);
@@ -161,17 +163,17 @@ const generateYear = () => {
   return years[randomIndex];
 };
 
-const generateDuration = () => {
-  const durations = [
+const generateRuntime = () => {
+  const runtimes = [
     `1h 36m`,
     `2h 05m`,
     `1h 30m`,
     `3h 10m`
   ];
 
-  const randomIndex = getRandomInteger(0, durations.length - 1);
+  const randomIndex = getRandomInteger(0, runtimes.length - 1);
 
-  return durations[randomIndex];
+  return runtimes[randomIndex];
 };
 
 const generateGenre = () => {
@@ -184,22 +186,65 @@ const generateGenre = () => {
     `Mystery`
   ];
 
-  const randomIndex = getRandomInteger(0, genres.length - 1);
+  // const randomIndex = getRandomInteger(0, genres.length - 1);
 
-  return genres[randomIndex];
+  // return genres[randomIndex];
+
+  return getRandomArray(genres, 3, 3);
 };
 
-const generateComment = () => {
+const generateDirector = () => {
+  const directors = [
+    `Anthony Mann`,
+    `Mann Anthony`,
+    `David Lynch`,
+    `Martin Scorsese`,
+    `Steven Soderbergh`,
+    `Terrence Malick`
+  ];
+
+  const randomIndex = getRandomInteger(0, directors.length - 1);
+
+  return directors[randomIndex];
+};
+
+const generateWriters = () => {
+  const writers = [
+    `William Shakespeare`,
+    `Fyodor Dostoevsky`,
+    `Leo Tolstoy`,
+    `Charles Dickens`,
+    `George Orwell`,
+    `Victor Hugo`
+  ];
+
+  return getRandomArray(writers, 3, 3);
+};
+
+const generateActors = () => {
+  const actors = [
+    `Jack Nicholson`,
+    `Marlon Brando`,
+    `Robert De Niro`,
+    `Al Pacino`,
+    `Dustin Hoffman`,
+    `Tom Hanks`
+  ];
+
+  return getRandomArray(actors, 3, 3);
+};
+
+export const generateComment = () => {
   return {
     emoji: generateEmoji(),
     dateComment: generateDate(),
-    author: generateAuthor(),
+    author: generateCommentAuthor(),
     message: generateMessage()
   };
 };
 
-const generateCommentsArray = () => {
-  let result = [];
+export const generateCommentsArray = () => {
+  const result = [];
   for (let i = 0; i < getRandomInteger(0, 5); i++) {
     result.push(generateComment());
   }
@@ -213,9 +258,12 @@ export const generateFilm = () => {
     description: generateDescription(),
     comments: generateCommentsArray(),
     rating: generateRating(),
-    year: generateYear(),
-    duration: generateDuration(),
+    releaseDate: generateYear(),
+    runtime: generateRuntime(),
     genre: generateGenre(),
-    commentsCount: generateCommentsArray().length
+    director: generateDirector(),
+    writers: generateWriters(),
+    actors: generateActors(),
+
   };
 };
