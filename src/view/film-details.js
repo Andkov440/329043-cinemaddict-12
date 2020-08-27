@@ -1,5 +1,7 @@
-export const createFilmDetailsPopupTemplate = (filmDetails) => {
-  const {caption, poster, description, rating, releaseDate, runtime, genre, director, writers, actors, comments} = filmDetails;
+import {createElement} from "../utils.js";
+
+const createFilmDetailsPopupTemplate = (filmDetails, commentsCount) => {
+  const {caption, poster, description, rating, releaseDate, runtime, genre, director, writers, actors} = filmDetails;
   return (
     `<section class="film-details">
   <form class="film-details__inner" action="" method="get">
@@ -78,7 +80,7 @@ export const createFilmDetailsPopupTemplate = (filmDetails) => {
 
     <div class="form-details__bottom-container">
       <section class="film-details__comments-wrap">
-        <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments.length}</span></h3>
+        <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${commentsCount}</span></h3>
 
         <ul class="film-details__comments-list">
 
@@ -119,3 +121,27 @@ export const createFilmDetailsPopupTemplate = (filmDetails) => {
 </section>`
   );
 };
+
+export default class FilmDetailsPopup {
+  constructor(filmDetails, commentsCount) {
+    this._filmDetails = filmDetails;
+    this._commentsCount = commentsCount;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmDetailsPopupTemplate(this._filmDetails, this._commentsCount);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
