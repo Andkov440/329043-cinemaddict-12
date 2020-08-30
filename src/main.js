@@ -28,6 +28,9 @@ render(siteMainElement, new MainNavigationView().getElement(), RenderPosition.BE
 
 if (filmCards.length > 0) {
   render(siteMainElement, new SortView().getElement(), RenderPosition.BEFOREEND);
+} else {
+  const noFilmComponent = new NoFilmView();
+  render(filmsList, noFilmComponent.getElement(), RenderPosition.BEFOREEND);
 }
 
 render(siteMainElement, new FilmsListContainerView().getElement(), RenderPosition.BEFOREEND);
@@ -37,7 +40,7 @@ const filmsList = films.querySelector(`.films-list`);
 const filmsListContainer = filmsList.querySelector(`.films-list__container`);
 
 const renderFilm = (filmListElement, filmCard) => {
-  const commentsCount = generateFilm().comments.length;
+  const commentsCount = filmCard.comments.length;
   const filmComments = new Array(commentsCount).fill().map(generateComment);
   const filmComponent = new FilmCardView(filmCard, commentsCount);
   const filmDetailsComponent = new FilmDetailsPopupView(filmCard, commentsCount);
@@ -76,11 +79,6 @@ const renderFilm = (filmListElement, filmCard) => {
 
   render(filmListElement, filmComponent.getElement(), RenderPosition.BEFOREEND);
 };
-
-if (filmCards.length === 0) {
-  const noFilmComponent = new NoFilmView();
-  render(filmsList, noFilmComponent.getElement(), RenderPosition.BEFOREEND);
-}
 
 for (let i = 0; i < FILM_COUNT_PER_STEP; i++) {
   renderFilm(filmsListContainer, filmCards[i]);
