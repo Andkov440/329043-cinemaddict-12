@@ -1,4 +1,4 @@
-import FilmsView from "./view/films.js";
+/* import FilmsView from "./view/films.js";
 import FilmsListView from "./view/films-list.js";
 import FilmsListContainerView from "./view/films-list-container.js";
 import FilmCardView from "./view/film-card.js";
@@ -20,3 +20,4 @@ export default class MovieList {
 
 
 }
+*/
